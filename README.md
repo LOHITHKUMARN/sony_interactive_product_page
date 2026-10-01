@@ -154,7 +154,7 @@ sony_interactive_product_page/
 │       ├── interactive-hotspots.png
 │       ├── battery-black-pure.png
 │       └── ...
-├── app.js                          # Canvas engine, touch swipe controller, hotspot SVG tethers
+├── script.js                       # Canvas engine, touch swipe controller, hotspot SVG tethers
 ├── index.html                      # Semantic HTML5 architecture & accessible markup
 ├── styles.css                      # Master design system, responsive clamp rules, keyframe animations
 ├── server.js                       # Lightweight Node.js server with immutable asset caching
