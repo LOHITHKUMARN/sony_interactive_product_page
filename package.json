@@ -1,0 +1,13 @@
+{
+  "name": "sony-wh-ch520-sequence",
+  "version": "1.0.0",
+  "description": "Sony WH-CH520 Cinematic Product Sequence",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

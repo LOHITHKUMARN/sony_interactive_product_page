@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sony WH-CH520 — Cinematic Product Sequence</title>
+  <meta name="description" content="Sony WH-CH520 24 fps cinematic scroll-controlled sequence and teardown.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=86">
+</head>
+<body class="theme-black">
+  <!-- Preloader Screen -->
+  <div id="preloader" class="preloader">
+    <div class="loader-ambient-glow" aria-hidden="true"></div>
+    <div class="loader-sonar-ring ring-1" aria-hidden="true"></div>
+    <div class="loader-sonar-ring ring-2" aria-hidden="true"></div>
+    <div class="loader-sonar-ring ring-3" aria-hidden="true"></div>
+
+    <div class="loader-content">
+      <div class="sony-brand-loader">SONY</div>
+      <div class="loader-model-tag">
+        <span class="loader-model-dot" aria-hidden="true"></span>
+        <span class="loader-model-name">WH-CH520 WIRELESS</span>
+      </div>
+
+      <div class="loader-bar-wrap">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+
+      <div class="loader-status">
+        <span id="loader-percent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimal Floating Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="sony-logo">SONY</span>
+        <span class="nav-divider">/</span>
+        <span class="product-badge">WH-CH520</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Cinematic Scroll Frame Sequence (First Screen / Only Element) -->
+  <section id="scrolly-section" class="scrolly-container">
+    <div class="canvas-sticky-wrapper" id="sticky-canvas-wrapper">
+      <!-- Ambient Glow Behind Model -->
+      <div class="glow-orb" id="glow-orb"></div>
+
+      <!-- Soft Gradient Scrim Overlays (Zero boxes, photo stays bright) -->
+      <div class="scrim-overlay scrim-left" id="scrim-left"></div>
+      <div class="scrim-overlay scrim-right" id="scrim-right"></div>
+
+      <!-- Center Title Inside Headband Arch (Initial Frame Hero) -->
+      <div class="center-title-container">
+        <h1 class="center-title">Sony WH-CH520</h1>
+      </div>
+
+      <!-- Boxless Editorial Left Callout (DSEE Sound Engine) -->
+      <div class="editorial-narrative editorial-left" id="editorial-left">
+        <div class="editorial-eyebrow-wrap">
+          <span class="eyebrow-line"></span>
+          <span class="editorial-eyebrow">DSEE™ SOUND ENGINE</span>
+        </div>
+        <h2 class="editorial-headline">Music, restored to<br>its full detail.</h2>
+        <p class="editorial-body">DSEE™ Upscale rebuilds high frequencies lost in compression, while 30mm drivers deliver it with clarity.</p>
+        <div class="editorial-features">
+          <span>30mm Drivers</span>
+          <span class="feature-sep">·</span>
+          <span>360 Reality Audio</span>
+          <span class="feature-sep">·</span>
+          <span>Custom EQ</span>
+        </div>
+      </div>
+
+      <!-- Boxless Editorial Right Callout (Power & Connectivity) -->
+      <div class="editorial-narrative editorial-right" id="editorial-right">
+        <div class="editorial-eyebrow-wrap">
+          <span class="eyebrow-line"></span>
+          <span class="editorial-eyebrow">POWER & CONNECTIVITY</span>
+        </div>
+        <h2 class="editorial-headline">Up to 50 hours of<br>uninterrupted sound.</h2>
+        <p class="editorial-body">A 3-minute quick charge delivers 1.5 hours of playback. Connect to two Bluetooth® devices at once with crystal-clear calls and Voice Assistant.</p>
+        <div class="editorial-features">
+          <span>50-Hr Battery</span>
+          <span class="feature-sep">·</span>
+          <span>3-Min Quick Charge</span>
+          <span class="feature-sep">·</span>
+          <span>Multipoint Pairing</span>
+          <span class="feature-sep">·</span>
+          <span>Voice Assistant</span>
+        </div>
+      </div>
+
+      <canvas id="sequence-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Product Details Section (Reveals smoothly after sequence ends)
+       ====================================================================== -->
+  <main class="product-details-flow" id="product-details">
+    
+    <!-- Alternating Feature Highlights -->
+    <section class="section-container" id="features">
+      <div class="features-split-container">
+        
+        <!-- Feature 1: 50-Hour Battery (Image Left, Text Right) -->
+        <article class="feature-split-row text-right feature-row-battery" id="feature-battery">
+          <div class="feature-text-col">
+            <span class="feature-col-tag">ENDURANCE LEADER</span>
+            <div class="feature-hero-stat" role="text" aria-label="50 Hours Playback">
+              <div class="stat-ambient-glow" aria-hidden="true"></div>
+              <span class="stat-number stat-counter" data-target="50">50</span>
+              <span class="stat-unit">HRS</span>
+            </div>
+            <h2 class="feature-col-title">Unstoppable Battery with 3-Minute Quick Charge</h2>
+            <p class="feature-col-desc">With up to 50 hours of battery life, you can listen to your favorite tracks without worrying about running out of power. If your headphones are running low, a rapid 3-minute quick charge delivers up to 1.5 hours of listening time via USB Type-C®.</p>
+            <div class="feature-specs-pills">
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="16" height="10" rx="2" ry="2"/>
+                  <line x1="22" y1="11" x2="22" y2="13"/>
+                </svg>
+                <span>Up to 50-Hour Playback</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span>3-Min = 1.5-Hr Quick Charge</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="6" width="16" height="12" rx="3"/>
+                  <line x1="9" y1="10" x2="15" y2="10"/>
+                  <line x1="9" y1="14" x2="15" y2="14"/>
+                </svg>
+                <span>USB Type-C® Fast Charge</span>
+              </span>
+            </div>
+          </div>
+          <div class="feature-media-col">
+            <div class="media-frame comfort-media-frame" id="frame-battery">
+              <div class="media-ambient-glow" aria-hidden="true"></div>
+              <img src="assets/images/battery-black-pure.png" alt="Sony WH-CH520 50-Hour Battery Life" class="feature-img comfort-headphone-img" id="img-battery" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 2: DSEE Sound Engine (Text Left, Image Right) -->
+        <article class="feature-split-row text-left feature-row-audio" id="feature-sound">
+          <div class="feature-text-col">
+            <span class="feature-col-tag">AUDIO FIDELITY</span>
+            <div class="feature-hero-stat" role="text" aria-label="30 Millimeter Dynamic Drivers">
+              <div class="stat-ambient-glow" aria-hidden="true"></div>
+              <span class="stat-number stat-counter" data-target="30">30</span>
+              <span class="stat-unit">MM</span>
+            </div>
+            <h2 class="feature-col-title">Music Restored to Authentic Studio Detail</h2>
+            <p class="feature-col-desc">When original music is compressed, high-frequency elements that add richness and detail are lost. Sony's Digital Sound Enhancement Engine (DSEE™) authentically restores them. Tailor sound to your personal preference using the Sony | Headphones Connect app EQ presets.</p>
+            <div class="feature-specs-pills">
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 10v4M6 6v12M10 3v18M14 8v8M18 5v14M22 10v4"/>
+                </svg>
+                <span>DSEE™ Sound Engine</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>30mm Dynamic Drivers</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>
+                </svg>
+                <span>360 Reality Audio</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" y1="21" x2="4" y2="14"/>
+                  <line x1="4" y1="10" x2="4" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="12"/>
+                  <line x1="12" y1="8" x2="12" y2="3"/>
+                  <line x1="20" y1="21" x2="20" y2="16"/>
+                  <line x1="20" y1="12" x2="20" y2="3"/>
+                  <line x1="1" y1="14" x2="7" y2="14"/>
+                  <line x1="9" y1="8" x2="15" y2="8"/>
+                  <line x1="17" y1="16" x2="23" y2="16"/>
+                </svg>
+                <span>Custom EQ Presets</span>
+              </span>
+            </div>
+          </div>
+          <div class="feature-media-col">
+            <div class="media-frame comfort-media-frame" id="frame-sound">
+              <div class="media-ambient-glow" aria-hidden="true"></div>
+              <img src="assets/images/sound-black-pure.png" alt="Sony WH-CH520 DSEE Audio Engine" class="feature-img comfort-headphone-img" id="img-sound" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 3: Multipoint Connection (Image Left, Text Right) -->
+        <article class="feature-split-row text-right feature-row-multipoint" id="feature-multipoint">
+          <div class="feature-text-col">
+            <span class="feature-col-tag">BLUETOOTH® 5.2</span>
+            <div class="feature-hero-stat" role="text" aria-label="2 Devices Multipoint Pairing">
+              <div class="stat-ambient-glow" aria-hidden="true"></div>
+              <span class="stat-number stat-counter" data-target="2">2</span>
+              <span class="stat-unit">DEVICES</span>
+            </div>
+            <h2 class="feature-col-title">Seamless Dual-Device Multipoint Pairing</h2>
+            <p class="feature-col-desc">For total convenience, pair your headphones with two Bluetooth® devices at once. When a phone call arrives, your headphones recognize which device is ringing and switch automatically, letting you jump between phone calls and PC video meetings seamlessly.</p>
+            <div class="feature-specs-pills">
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="13" height="13" rx="2"/>
+                  <rect x="9" y="8" width="13" height="13" rx="2"/>
+                </svg>
+                <span>Multipoint Dual Pairing</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6.5 6.5l11 11L12 23V1l5.5 5.5-11 11"/>
+                </svg>
+                <span>Bluetooth® 5.2</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                <span>Swift Pair & Fast Pair</span>
+              </span>
+            </div>
+          </div>
+          <div class="feature-media-col">
+            <div class="media-frame comfort-media-frame" id="frame-multipoint">
+              <div class="media-ambient-glow" aria-hidden="true"></div>
+              <img src="assets/images/bluetooth-swivel-pure.png" alt="Sony WH-CH520 Multipoint Connection" class="feature-img comfort-headphone-img" id="img-multipoint" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 4: Mic & Voice Assistant (Text Left, Image Right) -->
+        <article class="feature-split-row text-left feature-row-mic" id="feature-mic">
+          <div class="feature-text-col">
+            <span class="feature-col-tag">HANDS-FREE CALLS</span>
+            <div class="feature-hero-stat" role="text" aria-label="1 Touch Voice Assistant & Calls">
+              <div class="stat-ambient-glow" aria-hidden="true"></div>
+              <span class="stat-number stat-counter" data-target="1">1</span>
+              <span class="stat-unit">TOUCH</span>
+            </div>
+            <h2 class="feature-col-title">Crystal-Clear Calls & Voice Assistant</h2>
+            <p class="feature-col-desc">Conversation flows freely with easy hands-free calling, thanks to the high-quality built-in microphone. Background noise suppression ensures your voice is heard clearly in busy environments. Trigger Google Assistant or Siri with a single button press.</p>
+            <div class="feature-specs-pills">
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+                <span>Noise-Suppressed Mic</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span>Google Assistant</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                  <path d="M12 6a6 6 0 0 0-6 6 1 1 0 0 0 2 0 4 4 0 0 1 4-4 1 1 0 0 0 0-2z"/>
+                </svg>
+                <span>Apple Siri Support</span>
+              </span>
+            </div>
+          </div>
+          <div class="feature-media-col">
+            <div class="media-frame comfort-media-frame" id="frame-mic">
+              <div class="media-ambient-glow" aria-hidden="true"></div>
+              <img src="assets/images/mic-calls-pure.png" alt="Sony WH-CH520 Microphone & Voice Assistant" class="feature-img comfort-headphone-img" id="img-mic" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <!-- Feature 5: Lightweight Ergonomics (Image Left, Text Right) -->
+        <article class="feature-split-row text-right feature-row-comfort" id="feature-comfort">
+          <div class="feature-text-col">
+            <span class="feature-col-tag">FEATHERWEIGHT FIT</span>
+            <div class="feature-hero-stat" role="text" aria-label="147 Grams">
+              <div class="stat-ambient-glow" aria-hidden="true"></div>
+              <span class="stat-number stat-count-147 stat-counter" data-target="147" aria-hidden="true">147</span>
+              <span class="stat-unit">GRAMS</span>
+            </div>
+            <h2 class="feature-col-title">Designed for All-Day Listening Comfort</h2>
+            <p class="feature-col-desc">Lightweight design features soft on-ear pads, an adjustable smooth headband cushion, and silent swivel joints that keep ears comfortable for hours. Fold them flat in seconds to slide directly into your bag or backpack.</p>
+            <div class="feature-specs-pills">
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                  <line x1="16" y1="8" x2="2" y2="22"/>
+                  <line x1="17.5" y1="15" x2="9" y2="15"/>
+                </svg>
+                <span>Ultra-light 147g</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+                <span>Swivel-Flat Design</span>
+              </span>
+              <span class="f-pill">
+                <svg class="pill-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+                <span>Plush Cushioned Headband</span>
+              </span>
+            </div>
+          </div>
+          <div class="feature-media-col">
+            <div class="media-frame comfort-media-frame" id="frame-comfort">
+              <div class="media-ambient-glow" aria-hidden="true"></div>
+              <img src="assets/images/comfort-147g-pure.png" alt="Sony WH-CH520 Lightweight Comfort" class="feature-img comfort-headphone-img" id="img-comfort" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Section: Interactive Feature Hotspots Explorer -->
+    <section class="section-container" id="interactive-explorer">
+      <div class="section-header">
+        <h2 class="section-title">Engineered to Perfection.</h2>
+        <p class="section-subtitle">Point to any dot on the headphones to reveal its hardware features and precision engineering.</p>
+      </div>
+
+      <div class="hotspot-explorer-card">
+        <!-- Floating Ambient Background Lighting -->
+        <div class="hotspot-ambient-glow"></div>
+
+        <div class="hotspot-stage-container" id="hotspot-container">
+          <!-- Dynamic Leader Line Canvas -->
+          <svg class="hotspot-callout-svg" id="hotspot-svg-canvas" aria-hidden="true">
+            <polyline id="hotspot-active-line" class="callout-leader-line" points="" />
+          </svg>
+
+          <!-- Left Info Badges (3 on left side) -->
+          <div class="callout-column callout-col-left">
+            <!-- 1. Padded Headband -->
+            <div class="callout-pill-badge badge-left" data-point="headband" tabindex="0">
+              <div class="pill-header">
+                <div class="pill-icon-circle">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                  </svg>
+                </div>
+                <div class="pill-header-text">
+                  <span class="pill-tag">ERGONOMICS</span>
+                  <h4 class="pill-title">Plush Padded Headband</h4>
+                </div>
+              </div>
+              <div class="pill-spec-highlight">Continuous Slider • Memory Cushion</div>
+              <p class="pill-desc">Memory foam cushioning distributes weight evenly across your crown for fatigue-free listening all day.</p>
+              <div class="pill-tags-row">
+                <span class="c-tag">Zero Crown Fatigue</span>
+                <span class="c-tag">Reinforced Slider</span>
+              </div>
+            </div>
+
+            <!-- 2. 90° Swivel-Flat Hinges -->
+            <div class="callout-pill-badge badge-left" data-point="swivel" tabindex="0">
+              <div class="pill-header">
+                <div class="pill-icon-circle">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                  </svg>
+                </div>
+                <div class="pill-header-text">
+                  <span class="pill-tag">MOBILITY</span>
+                  <h4 class="pill-title">90° Swivel-Flat Hinges</h4>
+                </div>
+              </div>
+              <div class="pill-spec-highlight">Silent Swivel Architecture</div>
+              <p class="pill-desc">Precision swivel joints rotate 90° flat so headphones rest naturally on your collarbone or slide into slim bags.</p>
+              <div class="pill-tags-row">
+                <span class="c-tag">Swivel-Flat</span>
+                <span class="c-tag">Travel Ready</span>
+              </div>
+            </div>
+
+            <!-- 3. 30mm Dynamic Drivers -->
+            <div class="callout-pill-badge badge-left" data-point="driver" tabindex="0">
+              <div class="pill-header">
+                <div class="pill-icon-circle">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 10v4M6 6v12M10 3v18M14 8v8M18 5v14M22 10v4"/>
+                  </svg>
+                </div>
+                <div class="pill-header-text">
+                  <span class="pill-tag">ACOUSTICS</span>
+                  <h4 class="pill-title">30mm Dynamic Drivers</h4>
+                </div>
+              </div>
+              <div class="pill-spec-highlight">DSEE™ & 360 Reality Audio</div>
+              <p class="pill-desc">Neodymium drivers with DSEE™ restore high-frequency sound lost in compression for rich, natural acoustics.</p>
+              <div class="pill-tags-row">
+                <span class="c-tag">DSEE™ Upscaling</span>
+                <span class="c-tag">30mm Neodymium</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center Headphone Image Box with Genuinely Locked Target Dots -->
+          <div class="hotspot-image-box" id="hotspot-image-box">
+            <img src="assets/images/interactive-hotspots.png" alt="Sony WH-CH520 Anatomy & Features" class="hotspot-base-img" />
+
+            <!-- Dot 1: Ergonomic Padded Headband (Crown) -->
+            <div class="hotspot-point" style="top: 8.5%; left: 50%;" data-point="headband" tabindex="0" role="button" aria-label="Padded Headband">
+              <button class="hotspot-trigger">
+                <span class="hotspot-sonar"></span>
+                <span class="hotspot-core"></span>
+              </button>
+            </div>
+
+            <!-- Dot 2: Swivel Flat Architecture -->
+            <div class="hotspot-point" style="top: 57%; left: 12.5%;" data-point="swivel" tabindex="0" role="button" aria-label="Silent Swivel Architecture">
+              <button class="hotspot-trigger">
+                <span class="hotspot-sonar"></span>
+                <span class="hotspot-core"></span>
+              </button>
+            </div>
+
+            <!-- Dot 3: 30mm Dynamic Driver & Soft Cushion -->
+            <div class="hotspot-point" style="top: 71%; left: 26.5%;" data-point="driver" tabindex="0" role="button" aria-label="30mm Driver and Cushion">
+              <button class="hotspot-trigger">
+                <span class="hotspot-sonar"></span>
+                <span class="hotspot-core"></span>
+              </button>
+            </div>
+
+            <!-- Dot 4: Tactile Physical Controls -->
+            <div class="hotspot-point" style="top: 86%; left: 68%;" data-point="controls" tabindex="0" role="button" aria-label="Tactile Control Buttons">
+              <button class="hotspot-trigger">
+                <span class="hotspot-sonar"></span>
+                <span class="hotspot-core"></span>
+              </button>
+            </div>
+
+            <!-- Dot 5: USB-C Fast Charge & Mic -->
+            <div class="hotspot-point" style="top: 92%; left: 63.5%;" data-point="charging" tabindex="0" role="button" aria-label="USB-C Fast Charging and Mic">
+              <button class="hotspot-trigger">
+                <span class="hotspot-sonar"></span>
+                <span class="hotspot-core"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Info Badges (2 on right side) -->
+          <div class="callout-column callout-col-right">
+            <!-- 4. Tactile Hardware Controls -->
+            <div class="callout-pill-badge badge-right" data-point="controls" tabindex="0">
+              <div class="pill-header">
+                <div class="pill-icon-circle">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                </div>
+                <div class="pill-header-text">
+                  <span class="pill-tag">CONTROLS</span>
+                  <h4 class="pill-title">Tactile Buttons</h4>
+                </div>
+              </div>
+              <div class="pill-spec-highlight">Play • Pause • Vol • Assistant</div>
+              <p class="pill-desc">Raised physical buttons provide intuitive click feedback to control tracks, adjust volume, and trigger Siri/Google.</p>
+              <div class="pill-tags-row">
+                <span class="c-tag">Click Feedback</span>
+                <span class="c-tag">Siri & Google</span>
+              </div>
+            </div>
+
+            <!-- 5. USB-C Fast Charging & Mic -->
+            <div class="callout-pill-badge badge-right" data-point="charging" tabindex="0">
+              <div class="pill-header">
+                <div class="pill-icon-circle">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <div class="pill-header-text">
+                  <span class="pill-tag">POWER & CALLS</span>
+                  <h4 class="pill-title">USB-C & Fast Charge</h4>
+                </div>
+              </div>
+              <div class="pill-spec-highlight">3 Min Charge = 1.5 Hr Play</div>
+              <p class="pill-desc">Up to 50 hours battery life. 3-minute rapid charge gives 1.5h playback. Built-in mic suppresses background noise.</p>
+              <div class="pill-tags-row">
+                <span class="c-tag">50h Battery</span>
+                <span class="c-tag">Noise-Free Mic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Quick Navigator Bar -->
+        <div class="hotspot-nav-bar">
+          <button class="hotspot-nav-pill" data-point="headband">
+            <span class="pill-dot"></span>
+            <span>Headband Cushion</span>
+          </button>
+          <button class="hotspot-nav-pill" data-point="swivel">
+            <span class="pill-dot"></span>
+            <span>Swivel Joints</span>
+          </button>
+          <button class="hotspot-nav-pill" data-point="driver">
+            <span class="pill-dot"></span>
+            <span>30mm Drivers</span>
+          </button>
+          <button class="hotspot-nav-pill" data-point="controls">
+            <span class="pill-dot"></span>
+            <span>Tactile Controls</span>
+          </button>
+          <button class="hotspot-nav-pill" data-point="charging">
+            <span class="pill-dot"></span>
+            <span>USB-C & Mic</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Colorway Selector (Where Comfort Meets Style Design) -->
+    <section class="section-container" id="colorways">
+      <div class="palette-stage-card" id="palette-stage-card" style="background: transparent !important; border: none !important; box-shadow: none !important; border-radius: 0 !important;">
+        <!-- Giant Ambient Backdrop Watermark -->
+        <div class="palette-watermark-text" aria-hidden="true">SONY</div>
+
+        <!-- Top Header Row -->
+        <div class="palette-top-bar">
+          <div class="palette-headline-box">
+            <h2 class="palette-headline-title">Where comfort<br>meets style</h2>
+          </div>
+
+          <!-- Color Swatch Circle Buttons -->
+          <div class="palette-swatch-circles" id="palette-swatch-circles" role="radiogroup" aria-label="Headphone Color Selection">
+            <button class="palette-circle-btn active" data-color="black" role="radio" aria-checked="true" aria-label="Matte Black" title="Matte Black" tabindex="0">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #35353c 0%, #161618 80%);">
+                  <svg class="swatch-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="white" role="radio" aria-checked="false" aria-label="Clean White" title="Clean White" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e1e3e8 85%);">
+                  <svg class="swatch-check dark-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="blue" role="radio" aria-checked="false" aria-label="Midnight Blue" title="Midnight Blue" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #2563eb 0%, #172554 85%);">
+                  <svg class="swatch-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="grey" role="radio" aria-checked="false" aria-label="Titanium Grey" title="Titanium Grey" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #a1a9b7 0%, #64748b 85%);">
+                  <svg class="swatch-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="pink" role="radio" aria-checked="false" aria-label="Blush Pink" title="Blush Pink" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #f472b6 0%, #db2777 85%);">
+                  <svg class="swatch-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="red" role="radio" aria-checked="false" aria-label="Crimson Red" title="Crimson Red" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #ef4444 0%, #991b1b 85%);">
+                  <svg class="swatch-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <button class="palette-circle-btn" data-color="yelow" role="radio" aria-checked="false" aria-label="Solar Yellow" title="Solar Yellow" tabindex="-1">
+                <span class="circle-fill" style="background: radial-gradient(circle at 35% 30%, #facc15 0%, #b45309 85%);">
+                  <svg class="swatch-check dark-check" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                </span>
+              </button>
+            </div>
+        </div>
+
+        <!-- Center Floating Product & 3D Orbit Ring -->
+        <div class="palette-center-viewport">
+          <!-- Stage Left & Right Navigation Arrows -->
+          <button class="palette-stage-arrow prev" id="palette-stage-prev" aria-label="Previous Colorway" title="Previous color">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="palette-stage-arrow next" id="palette-stage-next" aria-label="Next Colorway" title="Next color">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <!-- Soft Ambient Backlight Spotlight for Crystal Clear Product Contrast -->
+          <div class="palette-ambient-spotlight" aria-hidden="true"></div>
+
+          <div class="palette-floater-wrap idle-levitate" id="palette-floater-wrap">
+            <img src="assets/colors/black.png" alt="Sony WH-CH520 Matte Black" id="palette-img-a" class="palette-main-img active-slot" />
+            <img src="" alt="" id="palette-img-b" class="palette-main-img" style="opacity: 0;" />
+            <div class="palette-floor-shadow"></div>
+          </div>
+
+          <!-- Single Clean 3D Perspective Ellipse Ring -->
+          <div class="palette-orbit-pedestal">
+            <div class="orbit-ring-wire" id="orbit-ring-wire"></div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Product Meta Title & Description -->
+        <div class="palette-bottom-bar">
+          <div class="palette-meta-group">
+            <div class="palette-pricing-line">
+              <span class="meta-product-title" id="meta-product-title">Sony WH-CH520 · Matte Black</span>
+            </div>
+            <p class="meta-description" id="meta-description">
+              Experience the warmth and acoustic detail in every track! Lightweight all-day comfort with up to 50 hours of battery life.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Section 4: Buy Callout Banner -->
+    <section class="section-container" id="buy-section">
+      <div class="buy-banner-card">
+        <div class="buy-banner-content">
+          <span class="buy-banner-tag">OFFICIAL SONY STORE</span>
+          <h2 class="buy-banner-title">Upgrade Your Daily Soundtrack.</h2>
+          <p class="buy-banner-desc">Includes 1-Year Sony Official Warranty, complimentary fast shipping, and 30-day money-back guarantee.</p>
+          <div class="buy-price-block">
+            <span class="buy-current-price">$59.99</span>
+          </div>
+          <div class="buy-actions-group">
+            <button class="btn btn-primary-buy" id="primary-buy-btn">Order Sony WH-CH520</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+
+  <script src="app.js?v=84"></script>
+</body>
+</html>
