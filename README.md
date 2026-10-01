@@ -1,20 +1,27 @@
 <div align="center">
 
 # 🎧 SONY WH-CH520
-### Cinematic Scrollytelling Product Experience
-
-[![Vanilla JS](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![HTML5](https://img.shields.io/badge/HTML5-Canvas_2D-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-Modern_Engine-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![Node.js](https://img.shields.io/badge/Runtime-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Performance](https://img.shields.io/badge/FPS-60FPS_Silky_Smooth-00F0FF?style=for-the-badge&logo=speedtest&logoColor=black)](https://github.com/)
-[![License](https://img.shields.io/badge/License-MIT-2563EB?style=for-the-badge)](LICENSE)
-
-<br/>
+### *Next-Generation Interactive Cinematic Web Experience*
 
 <p align="center">
-  <b>An Apple-grade interactive keynote experience showcasing the Sony WH-CH520 Wireless Headphones.</b><br/>
-  Featuring a 24 fps scroll-driven frame engine, interactive hardware anatomy radar, 3D orbit colorway showroom, and reactive acoustic audio aesthetics — built entirely with <b>pure Vanilla JavaScript, CSS, and HTML5 Canvas</b> (Zero heavy UI libraries).
+  <img src="https://img.shields.io/badge/SONY-Acoustic_Engineering-000000?style=for-the-badge&logo=sony&logoColor=white" alt="Sony" />
+  <img src="https://img.shields.io/badge/Frame_Engine-24_FPS_Scrollytelling-00d2ff?style=for-the-badge" alt="24 FPS" />
+  <img src="https://img.shields.io/badge/Gestures-Touch_&_Hand_Swipe-30d158?style=for-the-badge" alt="Touch Ready" />
+  <img src="https://img.shields.io/badge/Architecture-100%25_Pure_Vanilla-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="Vanilla JS" />
+  <img src="https://img.shields.io/badge/Performance-60_FPS_Silky-2997ff?style=for-the-badge" alt="60 FPS" />
+</p>
+
+<p align="center">
+  <b>A bespoke, Apple-grade keynote web experience designed to showcase the Sony WH-CH520 Wireless Headphones.</b><br/>
+  Featuring a 24 fps scroll-driven sequence engine, interactive hardware anatomy radar, screen-touch gesture colorway orbit, and fluid responsive design — built with <b>pure Vanilla JavaScript, modern CSS3, and HTML5 Canvas</b> with zero heavy third-party UI libraries.
+</p>
+
+<p align="center">
+  <a href="#-interactive-showcase-matrix">Explore Features</a> •
+  <a href="#-touch--gesture-controls">Touch Controls</a> •
+  <a href="#-colorway-palette">7 Colorways</a> •
+  <a href="#-quickstart-guide">Run Locally</a> •
+  <a href="#-under-the-hood">Architecture</a>
 </p>
 
 ---
@@ -23,27 +30,43 @@
 
 <br/>
 
-## ✨ Key Experience Highlights
+## 🌌 Interactive Showcase Matrix
 
 <table>
   <tr>
-    <td width="50%">
-      <h3 align="center">🎬 24 FPS Scrollytelling Canvas</h3>
-      <p>Scroll-synchronized 264-frame sequence loaded into a high-DPI HTML5 canvas engine. Translates continuous mouse or touch wheel velocity into liquid-smooth frame interpolation with zero lag.</p>
+    <td width="50%" valign="top">
+      <h3>🎬 24 FPS Scrollytelling Sequence</h3>
+      <p>Scroll-driven 264-frame cinematic sequence rendered on a High-DPI 2D Canvas. Intelligent lerp interpolation translates scroll speed into buttery-smooth frame scrubbing with seamless cover scaling.</p>
+      <ul>
+        <li><b>High-DPI Scaling</b>: Adapts dynamically to DPR2 / Retina screens</li>
+        <li><b>Smart Framing</b>: Zero cropping of headband across all aspect ratios</li>
+      </ul>
     </td>
-    <td width="50%">
-      <h3 align="center">🎯 Interactive Hardware Radar</h3>
-      <p>Interactive anatomy explorer featuring dynamic SVG leader lines that real-time tether to pinpoint target dots on the headphones, revealing precision engineering specs on hover or click.</p>
+    <td width="50%" valign="top">
+      <h3>🎯 Hardware Anatomy Radar</h3>
+      <p>Precision interactive teardown highlighting core headphone engineering. Hovering or tapping radar points draws mathematical SVG leader lines connecting dots to glassmorphic spec badges.</p>
+      <ul>
+        <li><b>Dynamic SVG Tethers</b>: Real-time elbow connector calculation</li>
+        <li><b>Active Radar Pings</b>: Concentric acoustic sonar pulse animations</li>
+      </ul>
     </td>
   </tr>
   <tr>
-    <td width="50%">
-      <h3 align="center">🎨 3D Orbit Colorway Showroom</h3>
-      <p>Interactive color studio featuring 7 rich colorways (Matte Black, Clean White, Midnight Blue, Titanium Grey, Blush Pink, Crimson Red, Solar Yellow) on a continuous 3D elliptical orbit pedestal.</p>
+    <td width="50%" valign="top">
+      <h3>🎨 3D Orbit Colorway Showroom</h3>
+      <p>Interactive color selector featuring all 7 signature finishes on a 3D perspective orbit ring. Move between colors by hand with intuitive touch swipe gestures or one-tap color swatches.</p>
+      <ul>
+        <li><b>Hand Swipe & Drag</b>: Physical finger tracking with angular physics</li>
+        <li><b>Reactive Ambient Halo</b>: Backlight dynamically shifts to color accents</li>
+      </ul>
     </td>
-    <td width="50%">
-      <h3 align="center">📊 Keynote Scroll-Triggered Stats</h3>
-      <p>Dynamic scroll-triggered animations cascading into view with live cubic easing counters: <b>50 HRS</b>, <b>30 MM</b>, <b>2 DEVICES</b>, <b>1 TOUCH</b>, and <b>147 GRAMS</b>.</p>
+    <td width="50%" valign="top">
+      <h3>📊 Scroll-Triggered Metric Counters</h3>
+      <p>Cinematic editorial section revealing key hardware specs as you traverse the page. Live cubic-eased numerical count-ups highlight endurance and featherweight fit.</p>
+      <ul>
+        <li><b>50 HRS</b>: Industry-leading battery endurance</li>
+        <li><b>147 GRAMS</b>: Ultra-light, all-day crown comfort</li>
+      </ul>
     </td>
   </tr>
 </table>
@@ -52,57 +75,90 @@
 
 ---
 
-## 💎 Design & Aesthetics
+## 👆 Touch & Gesture Controls
 
-- **Deep Obsidian Theme**: Precision dark-mode palette (`#000000`, `#070709`) with Sony electric cyan (`#00f0ff`) and sapphire blue (`#2997ff`) ambient glow accents.
-- **Acoustic Wave Preloader**: Sonar ripple waves expanding outward in sync with an animated neon shimmer progress track.
-- **Micro-Interactions**: Hover glows, reactive tactile pills, floating idle levitation, and glassmorphism cards.
-- **Responsive Architecture**: Fluid scaling from 4K ultrawide monitors down to mobile viewports using modern CSS `clamp()`, Flexbox, and CSS Grid.
+Built natively for **smartphones, tablets, iPads, touch laptops, and desktop**:
+
+```
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                      COLORWAY ORBIT STAGE                              │
+ │                                                                        │
+ │       ◀  [ Swipe Right ]       [ Headphone ]       [ Swipe Left ]  ▶   │
+ │        Previous Colorway         Drag by Hand       Next Colorway      │
+ │                                                                        │
+ │       [●]       [●]       [●]       [●]       [●]       [●]       [●]  │
+ │      Black     White     Blue      Grey      Pink       Red     Yellow │
+ └────────────────────────────────────────────────────────────────────────┘
+```
+
+| Input Mode | Action | Result |
+| :--- | :--- | :--- |
+| **Finger Drag / Swipe** | Drag left / flick left on screen | Smoothly spins forward to the **Next Colorway** |
+| **Finger Drag / Swipe** | Drag right / flick right on screen | Smoothly spins backward to the **Previous Colorway** |
+| **Direct Screen Tap** | Tap left or right half of the stage | Instantly switches to previous / next color |
+| **Swatch Touch** | Tap any of the 7 color circles | Direct jump with expanded hit-zones for accurate finger taps |
+| **Keyboard Controls** | `←` Left Arrow / `→` Right Arrow | Navigate colors or scrub scrollytelling frames |
+| **Spacebar** | Spacebar press | Toggles automated 24 FPS film playback mode |
 
 <br/>
 
 ---
 
-## 🛠️ Technology Stack
+## 🎨 Signature Colorway Palette
 
-```
-Frontend Architecture:
-├── Core Engine:     Vanilla JavaScript (ES6+)
-├── Visual Render:   HTML5 Canvas 2D Context (High-DPI scaled)
-├── Vector Layer:    Dynamic SVG Leader-Line Canvas
-├── Styling Engine:  Custom Modern CSS3 (Zero Tailwind / Zero Bootstrap)
-└── Font Systems:    Plus Jakarta Sans & Space Grotesk
-```
+Experience all 7 precision matte finishes engineered for every aesthetic:
 
-```
-Local Development Server:
-└── Zero-Config Node.js HTTP Streaming Server (server.js) with native MIME handling and immutable asset caching.
-```
+| Colorway | Preview | Hex Accent | Character & Acoustic Vibe |
+| :--- | :---: | :---: | :--- |
+| **Matte Black** | ⚫ | `#161618` | Iconic stealth obsidian finish with velvet touch |
+| **Clean White** | ⚪ | `#ffffff` | Crisp architectural purity with cloud-soft cushions |
+| **Midnight Blue** | 🔵 | `#2563eb` | Deep celestial marine tone with metallic electric edge |
+| **Titanium Grey** | 🔘 | `#94a3b8` | Industrial space-grade grey for minimalists |
+| **Blush Pink** | 🌸 | `#f472b6` | Playful pastel warmth with energetic creative confidence |
+| **Crimson Red** | 🔴 | `#ef4444` | Unapologetic fiery red commanding instant stage presence |
+| **Solar Yellow** | 🟡 | `#facc15` | Radiant sunshine finish for bold, high-energy trendsetters |
 
 <br/>
 
 ---
 
-## 📁 Repository Structure
+## 💎 Design System & Motion Engineering
+
+- **Obsidian Dark Room Atmosphere**: Built around deep black (`#000000`) and surface carbon (`#0a0a0e`) to maximize contrast and make headphone textures shine.
+- **Acoustic Sonar Preloader**: Guaranteed 3-second cinematic preloader with expanding acoustic wave pulses and neon gradient brand shimmer.
+- **Glassmorphism Spec Badges**: Frosted glass badges (`backdrop-filter: blur(24px)`) styled with subtle border illumination and high-legibility typography.
+- **Non-Jumping Mobile Stacking**: Smart flex order hierarchy keeps active callouts docked beneath the headphone without awkward layout shifts.
+- **Zero Framework Bloat**: 100% framework-free. No React, no Vue, no Tailwind, no external animation libraries. Runs at native browser speeds.
+
+<br/>
+
+---
+
+## 🏗️ Architecture & Project Structure
 
 ```graphql
-sony/
+sony_interactive_product_page/
 ├── assets/
-│   ├── colors/                     # 7 Signature colorway headphone assets
+│   ├── colors/                     # High-res transparent PNGs for all 7 colorways
 │   │   ├── black.png
 │   │   ├── blue.png
+│   │   ├── grey.png
+│   │   ├── pink.png
+│   │   ├── red.png
 │   │   ├── white.png
+│   │   └── yelow.png
+│   ├── ezgif-299ea441f97edf5f-jpg/ # 264 Sequence frames for scrollytelling
+│   │   ├── ezgif-frame-001.jpg
 │   │   └── ...
-│   ├── ezgif-299ea441f97edf5f-jpg/ # 264 Frame high-resolution scroll sequence
-│   └── images/                     # Product detail cutouts and anatomy diagrams
-│       ├── battery-black-pure.png
+│   └── images/                     # Teardown cutouts and anatomical diagrams
 │       ├── interactive-hotspots.png
+│       ├── battery-black-pure.png
 │       └── ...
-├── app.js                          # Core scrollytelling, canvas, & interaction logic
-├── index.html                      # Semantic HTML5 architecture & UI markup
-├── styles.css                      # Complete styling, animations, & responsive rules
-├── server.js                       # Lightweight Node.js local streaming server
-├── package.json                    # Project configuration & npm dev scripts
+├── app.js                          # Canvas engine, touch swipe controller, hotspot SVG tethers
+├── index.html                      # Semantic HTML5 architecture & accessible markup
+├── styles.css                      # Master design system, responsive clamp rules, keyframe animations
+├── server.js                       # Lightweight Node.js server with immutable asset caching
+├── package.json                    # Development scripts and project configuration
 └── README.md                       # Documentation
 ```
 
@@ -110,47 +166,44 @@ sony/
 
 ---
 
-## 🚀 Getting Started
+## ⚡ Performance Highlights
 
-Follow these simple steps to run the experience locally:
+- **In-Memory Frame Buffering**: Sequence frames load asynchronously in parallel behind the 3-second preloader, guaranteeing smooth scrubbing from the very first frame.
+- **Sub-Pixel Lerp Damping**: Linear interpolation (`lerpFactor = 0.16`) eliminates micro-stutters during aggressive touchpad or scroll wheel flicks.
+- **Immutable Asset Streaming**: `server.js` serves sequence images with `Cache-Control: public, max-age=31536000, immutable` headers for instant local frame playback.
+- **Pure CSS Transitions**: All orbit rotation, badge fades, and glow pulsations run on GPU-accelerated `transform` and `opacity` layers.
 
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed (v14 or higher).
+<br/>
+
+---
+
+## 🚀 Quickstart Guide
+
+Run this project on your local machine in under a minute:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/sony-wh-ch520-cinematic.git
-cd sony-wh-ch520-cinematic
+git clone https://github.com/LOHITHKUMARN/sony_interactive_product_page.git
+cd sony_interactive_product_page
 ```
 
-### 2. Start the Local Server
+### 2. Launch Local Server
 ```bash
 npm run dev
 ```
 
 ### 3. Open in Browser
-Visit **[http://localhost:3000](http://localhost:3000)** in your browser.
+Visit **[http://localhost:3000](http://localhost:3000)** to experience the site.
 
 <br/>
 
 ---
-
-## ⚡ Performance Optimization
-
-- **Frame Preloading & Memory Management**: Frame images are asynchronously preloaded into an in-memory buffer before canvas rendering begins.
-- **Immutable Asset Caching**: `server.js` serves sequence images with `Cache-Control: public, max-age=31536000, immutable` headers for instant frame scrubbing.
-- **Zero Framework Overhead**: Built with 0 external UI dependencies for instantaneous initial loads and 60+ FPS scroll performance.
-
-<br/>
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** — feel free to use it for portfolio showcases, learning, or web design inspiration.
-
-<br/>
 
 <div align="center">
-  <sub>Engineered with precision for audio enthusiasts and web crafters.</sub>
+
+### 🎧 SONY WH-CH520
+**Engineered with acoustic precision & interactive passion.**
+
+<sub>Created with pure Vanilla Web Technologies • Designed for All Screen Sizes</sub>
+
 </div>
