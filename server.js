@@ -21,7 +21,7 @@ const MIME_TYPES = {
   '.wav': 'audio/wav'
 };
 
-const server = http.createServer((req, res) => {
+function handler(req, res) {
   let reqPath = decodeURI(req.url.split('?')[0]);
   if (reqPath === '/') reqPath = '/index.html';
 
@@ -63,8 +63,15 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, headers);
     fs.createReadStream(filePath).pipe(res);
   });
-});
+}
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// Local standalone server execution
+if (require.main === module) {
+  const server = http.createServer(handler);
+  server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}
+
+// Export handler for serverless runtimes
+module.exports = handler;
