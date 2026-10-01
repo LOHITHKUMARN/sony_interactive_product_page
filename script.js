@@ -7,6 +7,12 @@
 (function () {
   'use strict';
 
+  // Ensure page always starts at top on fresh visit or reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // --- Configuration ---
   const TOTAL_FRAMES = 264;
   const FRAME_DIRECTORY = 'assets/ezgif-299ea441f97edf5f-jpg';
@@ -827,11 +833,6 @@
     hotspotNavPills.forEach((pill) => {
       const isActive = pill.dataset.point === pointKey;
       pill.classList.toggle('active', isActive);
-      if (isActive && isMobileOrTouch()) {
-        try {
-          pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        } catch (_) {}
-      }
     });
 
     drawLeaderLine(pointKey);
