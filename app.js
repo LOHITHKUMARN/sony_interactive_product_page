@@ -472,6 +472,12 @@
       primaryBuyBtn.textContent = `Order Sony WH-CH520 · ${data.title}`;
     }
 
+    // Dynamic backlight ambient spotlight tint for active colorway
+    const ambientSpotlight = document.querySelector('.palette-ambient-spotlight');
+    if (ambientSpotlight && data.accent) {
+      ambientSpotlight.style.background = `radial-gradient(circle, ${data.accent}33 0%, ${data.accent}0f 45%, transparent 72%)`;
+    }
+
     // Trigger single orbit ring wire pulse & dial handle spin
     if (orbitRingWire) {
       orbitRingWire.classList.remove('pulse');
@@ -588,6 +594,135 @@
 
   if (orbitDialHandle) {
     orbitDialHandle.addEventListener('click', gotoNextColor);
+  }
+
+  // --- Screen Touch / Hand Swipe & Drag Color Selection Controller ---
+  const centerViewport = document.querySelector('.palette-center-viewport');
+  if (centerViewport && floaterWrap) {
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentDeltaX = 0;
+    let isHorizontalGesture = null;
+    let startTime = 0;
+    let pointerId = null;
+
+    function onPointerDown(e) {
+      // Ignore if user tapped directly on stage arrows or dial button
+      if (e.target.closest('.palette-stage-arrow') || e.target.closest('#orbit-dial-handle')) {
+        return;
+      }
+      if (e.button !== undefined && e.button !== 0) return;
+
+      isDragging = true;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      currentDeltaX = 0;
+      isHorizontalGesture = null;
+      startTime = performance.now();
+
+      floaterWrap.style.transition = 'none';
+      floaterWrap.classList.add('is-touch-dragging');
+      centerViewport.classList.add('is-dragging');
+
+      try {
+        centerViewport.setPointerCapture(pointerId);
+      } catch (err) {}
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging || e.pointerId !== pointerId) return;
+
+      const diffX = e.clientX - startX;
+      const diffY = e.clientY - startY;
+
+      // Detect if user intended a horizontal swipe vs vertical scroll
+      if (isHorizontalGesture === null) {
+        if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+          isHorizontalGesture = Math.abs(diffX) >= Math.abs(diffY);
+        }
+      }
+
+      // If user is scrolling vertically up/down the page, yield to browser
+      if (isHorizontalGesture === false) {
+        return;
+      }
+
+      if (isHorizontalGesture === true) {
+        currentDeltaX = diffX;
+        // Damped physical curve so headphone travels with the finger
+        const maxDrag = 150;
+        const clampedDelta = Math.sign(diffX) * Math.min(Math.abs(diffX), maxDrag);
+        const rotDeg = clampedDelta * 0.045;
+        const yOffset = Math.abs(clampedDelta) * 0.055;
+
+        floaterWrap.style.transform = `translate3d(${clampedDelta}px, ${yOffset}px, 0) rotate(${rotDeg}deg)`;
+      }
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging || e.pointerId !== pointerId) return;
+      isDragging = false;
+
+      try {
+        centerViewport.releasePointerCapture(pointerId);
+      } catch (err) {}
+
+      centerViewport.classList.remove('is-dragging');
+      floaterWrap.classList.remove('is-touch-dragging');
+
+      const elapsed = performance.now() - startTime;
+      const velocity = Math.abs(currentDeltaX) / Math.max(elapsed, 1);
+
+      // Threshold: dragged more than 35px or flicked quickly with finger
+      const isSwipe = isHorizontalGesture === true && (Math.abs(currentDeltaX) > 35 || (Math.abs(currentDeltaX) > 15 && velocity > 0.35));
+
+      if (isSwipe) {
+        floaterWrap.style.transition = 'none';
+        floaterWrap.style.transform = '';
+        if (currentDeltaX < 0) {
+          // Swiped finger left -> Next colorway
+          gotoNextColor();
+        } else {
+          // Swiped finger right -> Previous colorway
+          gotoPrevColor();
+        }
+      } else {
+        // Check for quick direct tap to cycle
+        const isQuickTap = Math.abs(currentDeltaX) < 10 && elapsed < 300;
+        if (isQuickTap) {
+          const rect = centerViewport.getBoundingClientRect();
+          const clickXRel = e.clientX - rect.left;
+          const ratio = clickXRel / rect.width;
+
+          floaterWrap.style.transform = '';
+          if (ratio < 0.32) {
+            // Tapped left zone
+            gotoPrevColor();
+          } else if (ratio > 0.68) {
+            // Tapped right zone
+            gotoNextColor();
+          } else {
+            // Tapped center headphone -> cycle forward
+            gotoNextColor();
+          }
+        } else {
+          // Spring smoothly back to center resting position
+          floaterWrap.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)';
+          floaterWrap.style.transform = '';
+        }
+      }
+
+      currentDeltaX = 0;
+      isHorizontalGesture = null;
+      pointerId = null;
+    }
+
+    centerViewport.addEventListener('pointerdown', onPointerDown);
+    centerViewport.addEventListener('pointermove', onPointerMove);
+    centerViewport.addEventListener('pointerup', onPointerUp);
+    centerViewport.addEventListener('pointercancel', onPointerUp);
   }
 
   if (stepperDec) {

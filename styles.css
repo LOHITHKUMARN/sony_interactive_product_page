@@ -1098,7 +1098,7 @@ body {
   padding: 6px 4px;
 }
 
-/* Swatch Button - 42px touch-friendly target */
+/* Swatch Button - 42px touch-friendly target with expanded touch hit-area */
 .palette-circle-btn {
   width: 42px;
   height: 42px;
@@ -1115,6 +1115,19 @@ body {
   padding: 0;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Screen touch expanded hit area for seamless finger tapping */
+.palette-circle-btn::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -8px;
+  right: -8px;
+  border-radius: 50%;
+  z-index: 2;
 }
 
 .palette-circle-btn:hover {
@@ -1122,7 +1135,7 @@ body {
 }
 
 .palette-circle-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.92) !important;
 }
 
 .palette-circle-btn:focus-visible {
@@ -1231,6 +1244,15 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+.palette-center-viewport:active,
+.palette-center-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 /* Stage Floating Left/Right Navigation Arrows */
@@ -1254,6 +1276,15 @@ body {
   transition: transform 0.25s var(--ease-out-expo), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease;
   outline: none;
   padding: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.palette-stage-arrow::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
 }
 
 .palette-stage-arrow:hover {
@@ -1288,6 +1319,7 @@ body {
   filter: blur(50px);
   pointer-events: none;
   z-index: 1;
+  transition: background 0.45s ease;
 }
 
 .palette-floater-wrap {
@@ -1300,6 +1332,15 @@ body {
   justify-content: center;
   margin: 0;
   perspective: 1200px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+
+.palette-floater-wrap.is-touch-dragging .palette-main-img.active-slot {
+  animation-play-state: paused !important;
 }
 
 /* Idle levitation when resting (pure vertical floating, no tilt) */
