@@ -759,10 +759,18 @@
   const calloutBadges = document.querySelectorAll('.callout-pill-badge');
   const hotspotPoints = document.querySelectorAll('.hotspot-point');
   const hotspotNavPills = document.querySelectorAll('.hotspot-nav-pill');
+  const hotspotKeys = ['headband', 'swivel', 'driver', 'controls', 'charging'];
+
+  const isMobileOrTouch = () =>
+    window.innerWidth <= 1080 ||
+    'ontouchstart' in window ||
+    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
 
   let calloutLeaveTimer = null;
 
   function clearAllCallouts() {
+    // On mobile or touch devices, always keep the active feature card displayed
+    if (isMobileOrTouch()) return;
     calloutBadges.forEach((badge) => badge.classList.remove('active'));
     hotspotPoints.forEach((point) => point.classList.remove('active'));
     hotspotNavPills.forEach((pill) => pill.classList.remove('active'));
@@ -773,7 +781,7 @@
   }
 
   function drawLeaderLine(key) {
-    if (!hotspotContainer || !activeLine) return;
+    if (!hotspotContainer || !activeLine || isMobileOrTouch()) return;
     const svgEl = document.getElementById('hotspot-svg-canvas');
     if (svgEl && (svgEl.offsetParent === null || getComputedStyle(svgEl).display === 'none')) return;
     const dot = document.querySelector(`.hotspot-point[data-point="${key}"]`);
@@ -805,6 +813,7 @@
   }
 
   function setActiveCallout(pointKey) {
+    if (!pointKey) return;
     if (calloutLeaveTimer) {
       clearTimeout(calloutLeaveTimer);
       calloutLeaveTimer = null;
@@ -816,43 +825,63 @@
       point.classList.toggle('active', point.dataset.point === pointKey);
     });
     hotspotNavPills.forEach((pill) => {
-      pill.classList.toggle('active', pill.dataset.point === pointKey);
+      const isActive = pill.dataset.point === pointKey;
+      pill.classList.toggle('active', isActive);
+      if (isActive && isMobileOrTouch()) {
+        try {
+          pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } catch (_) {}
+      }
     });
 
     drawLeaderLine(pointKey);
   }
 
   function queueClearCallouts() {
+    if (isMobileOrTouch()) return;
     if (calloutLeaveTimer) clearTimeout(calloutLeaveTimer);
-    calloutLeaveTimer = setTimeout(clearAllCallouts, 120);
+    calloutLeaveTimer = setTimeout(clearAllCallouts, 140);
   }
 
   // --- Pointing directly to the dots on the headphone ---
   hotspotPoints.forEach((point) => {
     const key = point.dataset.point;
 
-    point.addEventListener('mouseenter', () => setActiveCallout(key));
-    point.addEventListener('mouseleave', queueClearCallouts);
+    point.addEventListener('mouseenter', () => {
+      if (!isMobileOrTouch()) setActiveCallout(key);
+    });
+    point.addEventListener('mouseleave', () => {
+      if (!isMobileOrTouch()) queueClearCallouts();
+    });
 
-    point.addEventListener('focus', () => setActiveCallout(key));
-    point.addEventListener('blur', queueClearCallouts);
+    point.addEventListener('focus', () => {
+      if (!isMobileOrTouch()) setActiveCallout(key);
+    });
+    point.addEventListener('blur', () => {
+      if (!isMobileOrTouch()) queueClearCallouts();
+    });
 
     point.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (point.classList.contains('active')) {
-        clearAllCallouts();
-      } else {
-        setActiveCallout(key);
-      }
+      setActiveCallout(key);
     });
+
+    point.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+      setActiveCallout(key);
+    }, { passive: true });
   });
 
   // --- Hovering over the revealed badge keeps it visible ---
   calloutBadges.forEach((badge) => {
     const key = badge.dataset.point;
 
-    badge.addEventListener('mouseenter', () => setActiveCallout(key));
-    badge.addEventListener('mouseleave', queueClearCallouts);
+    badge.addEventListener('mouseenter', () => {
+      if (!isMobileOrTouch()) setActiveCallout(key);
+    });
+    badge.addEventListener('mouseleave', () => {
+      if (!isMobileOrTouch()) queueClearCallouts();
+    });
 
     badge.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -863,20 +892,58 @@
   hotspotNavPills.forEach((pill) => {
     const key = pill.dataset.point;
 
-    pill.addEventListener('mouseenter', () => setActiveCallout(key));
-    pill.addEventListener('mouseleave', queueClearCallouts);
+    pill.addEventListener('mouseenter', () => {
+      if (!isMobileOrTouch()) setActiveCallout(key);
+    });
+    pill.addEventListener('mouseleave', () => {
+      if (!isMobileOrTouch()) queueClearCallouts();
+    });
 
     pill.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (pill.classList.contains('active')) {
-        clearAllCallouts();
-      } else {
-        setActiveCallout(key);
-      }
+      setActiveCallout(key);
     });
+
+    pill.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+      setActiveCallout(key);
+    }, { passive: true });
   });
 
+  // --- Touch swipe gestures across the stage to flip between features ---
+  let touchStartX = 0;
+  let touchStartY = 0;
+  if (hotspotContainer) {
+    hotspotContainer.addEventListener('touchstart', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }
+    }, { passive: true });
+
+    hotspotContainer.addEventListener('touchend', (e) => {
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      const diffX = e.changedTouches[0].clientX - touchStartX;
+      const diffY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(diffX) > 42 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+        const activeBadge = document.querySelector('.callout-pill-badge.active');
+        const currentKey = activeBadge ? activeBadge.dataset.point : 'headband';
+        const currentIndex = hotspotKeys.indexOf(currentKey);
+        if (diffX < 0) {
+          // Swipe left -> next feature
+          const nextIndex = (currentIndex + 1) % hotspotKeys.length;
+          setActiveCallout(hotspotKeys[nextIndex]);
+        } else {
+          // Swipe right -> prev feature
+          const prevIndex = (currentIndex - 1 + hotspotKeys.length) % hotspotKeys.length;
+          setActiveCallout(hotspotKeys[prevIndex]);
+        }
+      }
+    }, { passive: true });
+  }
+
   document.addEventListener('click', (e) => {
+    if (isMobileOrTouch()) return;
     if (!e.target.closest('#hotspot-container') && !e.target.closest('.hotspot-nav-bar')) {
       clearAllCallouts();
     }
@@ -888,6 +955,9 @@
       drawLeaderLine(activePoint.dataset.point);
     }
   });
+
+  // Default active feature so the section is always populated and informative
+  setActiveCallout('headband');
 
   // --- Scroll-Triggered Feature Reveals & Number Count-Up Animations ---
   const featureRows = document.querySelectorAll('.feature-split-row');
