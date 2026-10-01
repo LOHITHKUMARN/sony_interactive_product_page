@@ -44,7 +44,9 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -52,6 +54,9 @@ body {
   min-height: 100vh;
   position: relative;
   line-height: 1.5;
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -382,7 +387,8 @@ body {
 }
 
 #sequence-canvas {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: 100vh;
   display: block;
   z-index: 1;
@@ -394,8 +400,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 650px;
-  height: 650px;
+  width: min(650px, 90vw);
+  height: min(650px, 90vw);
   border-radius: 50%;
   background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
   filter: blur(90px);
@@ -600,13 +606,18 @@ body {
   color: #f5f5f7;
   padding-bottom: 8rem;
   box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .section-container {
   max-width: 1320px;
+  width: 100%;
   margin: 0 auto;
   padding: clamp(3.2rem, 6vh, 6.5rem) clamp(1rem, 3.2vw, 2.2rem);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .section-header {
@@ -1036,13 +1047,14 @@ body {
 .palette-stage-card {
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: 100%;
   max-height: 100%;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: visible;
+  overflow: hidden;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -1057,15 +1069,17 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-sans);
-  font-size: clamp(6.5rem, 18vw, 15rem);
+  font-size: clamp(3.5rem, 16vw, 15rem);
   font-weight: 900;
   letter-spacing: -0.05em;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.04);
   user-select: none;
   pointer-events: none;
   line-height: 1;
   z-index: 1;
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Top Bar: Headline Left, Circles Right */
@@ -1700,46 +1714,116 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
     max-height: none;
-    padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1rem, 2.5vw, 1.5rem);
+    padding: clamp(1.8rem, 4vh, 3rem) clamp(1rem, 3vw, 1.5rem);
+    overflow: hidden !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .palette-stage-card {
     min-height: auto;
     padding: 0;
+    overflow: hidden !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .palette-center-viewport {
-    height: clamp(300px, 48vh, 400px);
-    margin: 0.5rem 0;
+    height: clamp(280px, 44vh, 380px);
+    width: 100%;
+    max-width: 100%;
+    margin: 0.5rem auto;
+    overflow: hidden !important;
   }
   .palette-floater-wrap {
-    width: min(320px, 72vw);
-    height: min(320px, 72vw);
+    width: min(280px, 72vw);
+    height: min(280px, 72vw);
+    margin: 0 auto;
   }
   .palette-orbit-pedestal {
-    bottom: 10px;
-    height: 105px;
+    bottom: 8px;
+    height: 95px;
+    width: min(340px, 92vw);
+    left: 50%;
+    transform: translateX(-50%);
   }
   .palette-top-bar {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+    width: 100%;
+  }
+  .palette-headline-box {
+    width: 100%;
+    text-align: center;
+  }
+  .palette-headline-title {
+    text-align: center;
+    margin: 0 auto;
   }
   .palette-swatch-circles {
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 4px 0;
+    flex-wrap: wrap;
   }
   .palette-bottom-bar {
     flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  .palette-meta-group {
+    width: 100%;
+    text-align: center;
+  }
+  .palette-pricing-line {
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .meta-product-title {
+    text-align: center;
+  }
+  .meta-description {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 44ch;
   }
   .palette-action-group {
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes orbit-slide-exit-forward {
+    0% { transform: translate(0, 0); opacity: 1; }
+    100% { transform: translate(-180px, -6px); opacity: 0; }
+  }
+  @keyframes orbit-slide-enter-forward {
+    0% { transform: translate(180px, -6px); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
+  }
+  @keyframes orbit-slide-exit-backward {
+    0% { transform: translate(0, 0); opacity: 1; }
+    100% { transform: translate(180px, -6px); opacity: 0; }
+  }
+  @keyframes orbit-slide-enter-backward {
+    0% { transform: translate(-180px, -6px); opacity: 0; }
+    100% { transform: translate(0, 0); opacity: 1; }
   }
 }
 
 @media (max-width: 480px) {
   .palette-headline-title {
-    font-size: clamp(1.75rem, 7.5vw, 2.2rem) !important;
+    font-size: clamp(1.65rem, 6.8vw, 2.1rem) !important;
+    line-height: 1.15 !important;
   }
   .palette-circle-btn {
     width: 36px;
@@ -1750,19 +1834,30 @@ body {
     gap: 8px;
   }
   .palette-center-viewport {
-    height: 280px;
+    height: 270px;
   }
   .palette-floater-wrap {
-    width: min(250px, 76vw);
-    height: min(250px, 76vw);
+    width: min(240px, 72vw);
+    height: min(240px, 72vw);
   }
   .palette-orbit-pedestal {
-    height: 85px;
+    height: 80px;
     bottom: 6px;
+    width: min(300px, 90vw);
   }
   .palette-stage-arrow {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+  }
+  .palette-stage-arrow.prev {
+    left: 6px;
+  }
+  .palette-stage-arrow.next {
+    right: 6px;
+  }
+  .meta-description {
+    font-size: 0.8rem;
+    max-width: 38ch;
   }
 }
 
@@ -2796,10 +2891,25 @@ body {
 
   .features-split-container {
     gap: 3.8rem !important;
+    width: 100% !important;
   }
 
   .feature-split-row {
     gap: 1.5rem !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .feature-text-col {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .feature-hero-stat {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .feature-hero-stat .stat-number {
@@ -2808,11 +2918,15 @@ body {
 
   .feature-col-title {
     font-size: clamp(1.45rem, 5.5vw, 1.85rem) !important;
+    text-align: center !important;
   }
 
   .feature-col-desc {
     font-size: 0.94rem !important;
     line-height: 1.55 !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .media-frame {
@@ -2822,6 +2936,10 @@ body {
   .comfort-headphone-img {
     max-width: min(290px, 80vw) !important;
     max-height: 260px !important;
+  }
+
+  .feature-specs-pills {
+    justify-content: center !important;
   }
 
   .feature-specs-pills .f-pill {
