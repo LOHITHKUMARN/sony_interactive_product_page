@@ -639,6 +639,8 @@
 
   function drawLeaderLine(key) {
     if (!hotspotContainer || !activeLine) return;
+    const svgEl = document.getElementById('hotspot-svg-canvas');
+    if (svgEl && (svgEl.offsetParent === null || getComputedStyle(svgEl).display === 'none')) return;
     const dot = document.querySelector(`.hotspot-point[data-point="${key}"]`);
     const badge = document.querySelector(`.callout-pill-badge[data-point="${key}"]`);
     if (!dot || !badge) return;
@@ -816,6 +818,12 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           explorerSection.classList.add('in-view');
+          // Activate default hotspot callout smoothly
+          setTimeout(() => {
+            if (!document.querySelector('.hotspot-point.active')) {
+              setActiveCallout('headband');
+            }
+          }, 600);
           explorerObserver.unobserve(explorerSection);
         }
       });

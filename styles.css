@@ -422,13 +422,21 @@ body {
 
 .center-title {
   font-family: var(--font-sans);
-  font-size: clamp(3.2rem, 8vw, 6.2rem);
+  font-size: clamp(2rem, 7vw, 6.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.0;
   color: #ffffff;
   white-space: nowrap;
   text-shadow: 0 4px 35px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 255, 255, 0.25);
+  max-width: 94vw;
+}
+
+@media (max-width: 480px) {
+  .center-title {
+    font-size: clamp(1.65rem, 6.8vw, 2.4rem);
+    white-space: normal;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -597,13 +605,14 @@ body {
 .section-container {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 6.5rem 2rem;
+  padding: clamp(3.2rem, 6vh, 6.5rem) clamp(1rem, 3.2vw, 2.2rem);
+  box-sizing: border-box;
 }
 
 .section-header {
   text-align: center;
   max-width: 780px;
-  margin: 0 auto 3.8rem auto;
+  margin: 0 auto clamp(2rem, 3.5vh, 3.8rem) auto;
 }
 
 .section-tag {
@@ -1644,25 +1653,25 @@ body {
   background: #f4f4f7;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 980px) {
   #colorways {
     height: auto;
     min-height: 100vh;
     min-height: 100dvh;
     max-height: none;
-    padding: 1.5rem 1rem;
+    padding: clamp(1.5rem, 3vh, 2.5rem) clamp(1rem, 2.5vw, 1.5rem);
   }
   .palette-stage-card {
     min-height: auto;
     padding: 0;
   }
   .palette-center-viewport {
-    height: 350px;
+    height: clamp(300px, 48vh, 400px);
     margin: 0.5rem 0;
   }
   .palette-floater-wrap {
-    width: min(290px, 68vw);
-    height: min(290px, 68vw);
+    width: min(320px, 72vw);
+    height: min(320px, 72vw);
   }
   .palette-orbit-pedestal {
     bottom: 10px;
@@ -1671,7 +1680,7 @@ body {
   .palette-top-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.8rem;
+    gap: 1rem;
   }
   .palette-swatch-circles {
     justify-content: flex-start;
@@ -1684,6 +1693,35 @@ body {
   }
   .palette-action-group {
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .palette-headline-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.2rem) !important;
+  }
+  .palette-circle-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  .palette-swatch-circles {
+    gap: 8px;
+  }
+  .palette-center-viewport {
+    height: 280px;
+  }
+  .palette-floater-wrap {
+    width: min(250px, 76vw);
+    height: min(250px, 76vw);
+  }
+  .palette-orbit-pedestal {
+    height: 85px;
+    bottom: 6px;
+  }
+  .palette-stage-arrow {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -2066,16 +2104,27 @@ body {
    -------------------------------------------------------------------------- */
 #interactive-explorer {
   position: relative;
-  height: 100vh;
-  height: 100dvh;
-  max-height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: clamp(0.35rem, 1vh, 0.75rem) 1.5rem clamp(0.3rem, 0.8vh, 0.6rem);
+  padding: clamp(2.5rem, 5vh, 4rem) clamp(1rem, 2.5vw, 2rem);
   box-sizing: border-box;
+}
+
+@media (min-width: 1081px) and (min-height: 820px) {
+  #interactive-explorer {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    overflow: hidden;
+    justify-content: space-between;
+    padding: clamp(0.35rem, 1vh, 0.75rem) 1.5rem clamp(0.3rem, 0.8vh, 0.6rem);
+  }
 }
 
 #interactive-explorer .section-header {
@@ -2568,41 +2617,233 @@ body {
   box-shadow: 0 0 10px #ffffff;
 }
 
-/* Mobile & Tablet Responsiveness */
-@media (max-width: 860px) {
+/* Mobile & Tablet Responsiveness for Interactive Explorer */
+@media (max-width: 1080px) {
   #interactive-explorer {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
-    padding: 1.5rem 1rem;
+    height: auto !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: clamp(2.2rem, 4vh, 3.5rem) clamp(1rem, 3vw, 1.8rem) !important;
   }
 
   .hotspot-stage-container {
-    height: auto;
-    max-height: none;
-    flex-direction: column;
-    gap: 1.2rem;
+    height: auto !important;
+    max-height: none !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    align-items: center !important;
   }
 
   .hotspot-callout-svg {
-    display: none;
+    display: none !important;
   }
 
   .hotspot-image-box {
-    width: min(320px, 75vw);
-    height: min(320px, 75vw);
+    order: 1;
+    width: min(340px, 78vw) !important;
+    height: min(340px, 78vw) !important;
+    margin: 0 auto;
   }
 
-  .callout-column {
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    max-height: none;
-    gap: 10px;
-    align-items: center;
+  .callout-col-left,
+  .callout-col-right {
+    order: 2;
+    width: 100% !important;
+    max-width: 440px !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;
   }
 
   .callout-pill-badge {
-    max-width: 360px;
+    max-width: min(420px, 92vw) !important;
+    margin: 0 auto;
+  }
+
+  .callout-pill-badge:not(.active) {
+    display: none !important;
+  }
+
+  .callout-pill-badge.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+    animation: mobile-badge-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hotspot-nav-bar {
+    order: 3;
+    margin-top: 0.8rem;
+    max-width: 540px;
+    gap: 0.45rem;
+  }
+
+  .hotspot-nav-pill {
+    padding: 0.32rem 0.8rem;
+    font-size: 0.78rem;
+  }
+}
+
+@keyframes mobile-badge-fade {
+  0% { opacity: 0; transform: translateY(8px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Low Viewport Height Adjustments (<820px, e.g. 1366x768, 1280x720, or scaled laptops) */
+@media (max-height: 820px) {
+  #interactive-explorer {
+    height: auto !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 2.2rem 1.25rem !important;
+  }
+
+  .hotspot-stage-container {
+    max-height: none !important;
+  }
+
+  #colorways {
+    height: auto !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 2.2rem 1.25rem !important;
+  }
+}
+
+/* Fluid Mobile Refinements (<600px) */
+@media (max-width: 600px) {
+  .nav-container {
+    padding: 0 1.25rem !important;
+  }
+
+  .sony-logo {
+    font-size: 1.02rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  .product-badge {
+    font-size: 0.76rem !important;
+  }
+
+  .editorial-headline {
+    font-size: clamp(1.5rem, 6.4vw, 2rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .editorial-body {
+    font-size: clamp(0.85rem, 3.8vw, 0.96rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .editorial-features {
+    font-size: 0.82rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .features-split-container {
+    gap: 3.8rem !important;
+  }
+
+  .feature-split-row {
+    gap: 1.5rem !important;
+  }
+
+  .feature-hero-stat .stat-number {
+    font-size: clamp(3.4rem, 13vw, 4.8rem) !important;
+  }
+
+  .feature-col-title {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem) !important;
+  }
+
+  .feature-col-desc {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .media-frame {
+    min-height: 240px !important;
+  }
+
+  .comfort-headphone-img {
+    max-width: min(290px, 80vw) !important;
+    max-height: 260px !important;
+  }
+
+  .feature-specs-pills .f-pill {
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  .specs-table-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .buy-banner-card {
+    padding: 2.5rem 1.2rem !important;
+  }
+
+  .buy-banner-title {
+    font-size: clamp(1.65rem, 6.8vw, 2.2rem) !important;
+  }
+
+  .buy-current-price {
+    font-size: 2.6rem !important;
+  }
+
+  .btn-primary-buy {
+    width: 100% !important;
+    max-width: 320px !important;
+    font-size: 0.98rem !important;
+    padding: 0.88rem 1.5rem !important;
+  }
+}
+
+/* Extra-compact phones (<380px, e.g. iPhone SE, Galaxy Fold outer) */
+@media (max-width: 380px) {
+  .palette-circle-btn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+
+  .palette-swatch-circles {
+    gap: 6px !important;
+  }
+
+  .palette-center-viewport {
+    height: 240px !important;
+  }
+
+  .palette-floater-wrap {
+    width: min(210px, 76vw) !important;
+    height: min(210px, 76vw) !important;
+  }
+
+  .palette-headline-title {
+    font-size: 1.55rem !important;
+  }
+
+  .hotspot-image-box {
+    width: min(280px, 84vw) !important;
+    height: min(280px, 84vw) !important;
+  }
+
+  .hotspot-nav-pill {
+    font-size: 0.72rem !important;
+    padding: 0.28rem 0.65rem !important;
   }
 }
