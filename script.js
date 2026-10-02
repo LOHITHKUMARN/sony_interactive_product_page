@@ -767,16 +767,12 @@
   const hotspotNavPills = document.querySelectorAll('.hotspot-nav-pill');
   const hotspotKeys = ['headband', 'swivel', 'driver', 'controls', 'charging'];
 
-  const isMobileOrTouch = () =>
-    window.innerWidth <= 1080 ||
-    'ontouchstart' in window ||
-    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-
+  const isMobileLayout = () => window.innerWidth <= 1080;
+  let activeCalloutKey = null;
   let calloutLeaveTimer = null;
 
   function clearAllCallouts() {
-    // On mobile or touch devices, always keep the active feature card displayed
-    if (isMobileOrTouch()) return;
+    activeCalloutKey = null;
     calloutBadges.forEach((badge) => badge.classList.remove('active'));
     hotspotPoints.forEach((point) => point.classList.remove('active'));
     hotspotNavPills.forEach((pill) => pill.classList.remove('active'));
@@ -787,27 +783,29 @@
   }
 
   function drawLeaderLine(key) {
-    if (!hotspotContainer || !activeLine || isMobileOrTouch()) return;
+    if (!hotspotContainer || !activeLine || isMobileLayout()) return;
     const svgEl = document.getElementById('hotspot-svg-canvas');
-    if (svgEl && (svgEl.offsetParent === null || getComputedStyle(svgEl).display === 'none')) return;
+    if (!svgEl || svgEl.offsetParent === null || getComputedStyle(svgEl).display === 'none') return;
     const dot = document.querySelector(`.hotspot-point[data-point="${key}"]`);
     const badge = document.querySelector(`.callout-pill-badge[data-point="${key}"]`);
     if (!dot || !badge) return;
 
-    const containerRect = hotspotContainer.getBoundingClientRect();
+    const svgRect = svgEl.getBoundingClientRect();
     const dotRect = dot.getBoundingClientRect();
     const badgeRect = badge.getBoundingClientRect();
 
-    // Dot center in container relative coordinates
-    const dotX = Math.round(dotRect.left + dotRect.width / 2 - containerRect.left);
-    const dotY = Math.round(dotRect.top + dotRect.height / 2 - containerRect.top);
+    if (svgRect.width === 0 || svgRect.height === 0 || dotRect.width === 0) return;
+
+    // Dot center in SVG canvas relative coordinates
+    const dotX = Math.round(dotRect.left + dotRect.width / 2 - svgRect.left);
+    const dotY = Math.round(dotRect.top + dotRect.height / 2 - svgRect.top);
 
     // Badge anchor (if left column: right edge; if right column: left edge)
     const isLeft = badge.classList.contains('badge-left');
     const badgeX = isLeft
-      ? Math.round(badgeRect.right - containerRect.left)
-      : Math.round(badgeRect.left - containerRect.left);
-    const badgeY = Math.round(badgeRect.top + badgeRect.height / 2 - containerRect.top);
+      ? Math.round(badgeRect.right - svgRect.left)
+      : Math.round(badgeRect.left - svgRect.left);
+    const badgeY = Math.round(badgeRect.top + badgeRect.height / 2 - svgRect.top);
 
     // Angled elbow midpoint
     const midX = isLeft
@@ -820,6 +818,8 @@
 
   function setActiveCallout(pointKey) {
     if (!pointKey) return;
+    activeCalloutKey = pointKey;
+
     if (calloutLeaveTimer) {
       clearTimeout(calloutLeaveTimer);
       calloutLeaveTimer = null;
@@ -835,11 +835,21 @@
       pill.classList.toggle('active', isActive);
     });
 
-    drawLeaderLine(pointKey);
+    requestAnimationFrame(() => {
+      drawLeaderLine(pointKey);
+    });
+  }
+
+  function refreshActiveLine() {
+    if (activeCalloutKey && !isMobileLayout()) {
+      requestAnimationFrame(() => {
+        drawLeaderLine(activeCalloutKey);
+      });
+    }
   }
 
   function queueClearCallouts() {
-    if (isMobileOrTouch()) return;
+    if (isMobileLayout()) return;
     if (calloutLeaveTimer) clearTimeout(calloutLeaveTimer);
     calloutLeaveTimer = setTimeout(clearAllCallouts, 140);
   }
@@ -849,17 +859,17 @@
     const key = point.dataset.point;
 
     point.addEventListener('mouseenter', () => {
-      if (!isMobileOrTouch()) setActiveCallout(key);
+      if (!isMobileLayout()) setActiveCallout(key);
     });
     point.addEventListener('mouseleave', () => {
-      if (!isMobileOrTouch()) queueClearCallouts();
+      if (!isMobileLayout()) queueClearCallouts();
     });
 
     point.addEventListener('focus', () => {
-      if (!isMobileOrTouch()) setActiveCallout(key);
+      if (!isMobileLayout()) setActiveCallout(key);
     });
     point.addEventListener('blur', () => {
-      if (!isMobileOrTouch()) queueClearCallouts();
+      if (!isMobileLayout()) queueClearCallouts();
     });
 
     point.addEventListener('click', (e) => {
@@ -878,10 +888,10 @@
     const key = badge.dataset.point;
 
     badge.addEventListener('mouseenter', () => {
-      if (!isMobileOrTouch()) setActiveCallout(key);
+      if (!isMobileLayout()) setActiveCallout(key);
     });
     badge.addEventListener('mouseleave', () => {
-      if (!isMobileOrTouch()) queueClearCallouts();
+      if (!isMobileLayout()) queueClearCallouts();
     });
 
     badge.addEventListener('click', (e) => {
@@ -894,10 +904,10 @@
     const key = pill.dataset.point;
 
     pill.addEventListener('mouseenter', () => {
-      if (!isMobileOrTouch()) setActiveCallout(key);
+      if (!isMobileLayout()) setActiveCallout(key);
     });
     pill.addEventListener('mouseleave', () => {
-      if (!isMobileOrTouch()) queueClearCallouts();
+      if (!isMobileLayout()) queueClearCallouts();
     });
 
     pill.addEventListener('click', (e) => {
@@ -944,21 +954,18 @@
   }
 
   document.addEventListener('click', (e) => {
-    if (isMobileOrTouch()) return;
+    if (isMobileLayout()) return;
     if (!e.target.closest('#hotspot-container') && !e.target.closest('.hotspot-nav-bar')) {
       clearAllCallouts();
     }
   });
 
   window.addEventListener('resize', () => {
-    const activePoint = document.querySelector('.hotspot-point.active');
-    if (activePoint) {
-      drawLeaderLine(activePoint.dataset.point);
-    }
+    refreshActiveLine();
   });
-
-  // Default active feature so the section is always populated and informative
-  setActiveCallout('headband');
+  window.addEventListener('orientationchange', () => {
+    setTimeout(refreshActiveLine, 200);
+  });
 
   // --- Scroll-Triggered Feature Reveals & Number Count-Up Animations ---
   const featureRows = document.querySelectorAll('.feature-split-row');
@@ -1024,20 +1031,26 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           explorerSection.classList.add('in-view');
-          // Activate default hotspot callout smoothly
-          setTimeout(() => {
-            if (!document.querySelector('.hotspot-point.active')) {
-              setActiveCallout('headband');
-            }
-          }, 600);
           explorerObserver.unobserve(explorerSection);
         }
       });
     }, {
-      threshold: 0.16,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.12,
+      rootMargin: '0px 0px -20px 0px'
     });
     explorerObserver.observe(explorerSection);
+  }
+
+  // Ensure leader line is refreshed when base image finishes loading
+  const hotspotBaseImg = document.querySelector('.hotspot-base-img');
+  if (hotspotBaseImg) {
+    if (hotspotBaseImg.complete) {
+      setTimeout(refreshActiveLine, 100);
+    } else {
+      hotspotBaseImg.addEventListener('load', () => {
+        setTimeout(refreshActiveLine, 100);
+      });
+    }
   }
 
   // --- Initialize ---

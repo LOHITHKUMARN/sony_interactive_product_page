@@ -4,6 +4,7 @@
 ### *Next-Generation Interactive Cinematic Web Experience*
 
 <p align="center">
+  <a href="https://sonyinteractiveproductpage.vercel.app/"><img src="https://img.shields.io/badge/Live_Website-sonyinteractiveproductpage.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" /></a>
   <img src="https://img.shields.io/badge/SONY-Acoustic_Engineering-000000?style=for-the-badge&logo=sony&logoColor=white" alt="Sony" />
   <img src="https://img.shields.io/badge/Frame_Engine-24_FPS_Scrollytelling-00d2ff?style=for-the-badge" alt="24 FPS" />
   <img src="https://img.shields.io/badge/Gestures-Touch_&_Hand_Swipe-30d158?style=for-the-badge" alt="Touch Ready" />
@@ -17,6 +18,14 @@
 </p>
 
 <p align="center">
+  <a href="https://sonyinteractiveproductpage.vercel.app/">
+    <img src="https://img.shields.io/badge/🔗_LIVE_WEBSITE-VISIT_NOW-000000?style=for-the-badge&logo=vercel&logoColor=white&labelColor=2997ff" alt="Live Website" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://sonyinteractiveproductpage.vercel.app/"><b>🌐 Live Website</b></a> •
+  <a href="#-live-website">Deployment</a> •
   <a href="#-interactive-showcase-matrix">Explore Features</a> •
   <a href="#-touch--gesture-controls">Touch Controls</a> •
   <a href="#-colorway-palette">7 Colorways</a> •
@@ -172,6 +181,24 @@ sony_interactive_product_page/
 - **Sub-Pixel Lerp Damping**: Linear interpolation (`lerpFactor = 0.16`) eliminates micro-stutters during aggressive touchpad or scroll wheel flicks.
 - **Immutable Asset Streaming**: `server.js` serves sequence images with `Cache-Control: public, max-age=31536000, immutable` headers for instant local frame playback.
 - **Pure CSS Transitions**: All orbit rotation, badge fades, and glow pulsations run on GPU-accelerated `transform` and `opacity` layers.
+
+<br/>
+
+---
+
+## 🌐 Live Website
+
+The project is deployed and live on Vercel:
+
+<p align="center">
+  <a href="https://sonyinteractiveproductpage.vercel.app/">
+    <b>👉 https://sonyinteractiveproductpage.vercel.app/</b>
+  </a>
+</p>
+
+- **Hosting**: Vercel Edge Network
+- **Production URL**: [sonyinteractiveproductpage.vercel.app](https://sonyinteractiveproductpage.vercel.app/)
+- **Fully Responsive**: Optimized for Mobile, Tablet, Touchscreen Laptops, and Desktop
 
 <br/>
 
